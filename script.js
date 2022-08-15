@@ -30,7 +30,7 @@ if(allow){
         }
         
         
-        if(i ===2){
+        if(i === i.length - 1){
             globalStr += str + '!';
         }
         else{
