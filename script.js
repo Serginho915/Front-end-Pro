@@ -35,8 +35,8 @@ if(allow){
         }
         else{
             globalStr += str + ' ';
-            formatStr = '';
         }
+            formatStr = '';
 
     }
 
