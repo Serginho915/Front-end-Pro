@@ -1,35 +1,24 @@
-let sports = [
-    ['skier','⛷'],
-    ['snowboarder','🏂'],
-    ['apple','🍎'],
-    ['hockey','🏒'],
-    ['ice skate','⛸'],
-    ['swimmer','🏊'],
-    ['surfer','🏄‍'],
-    ['watermelon','🍉'],
-    ['lemon','🍋'],
-    ['rowboat','🚣'],
-    ['bicyclist','🚴‍']
-];
+let hero = ['Ivan'];
+let native = ['York','Of'];
+let destination = ['Poltava','In'];
+const COLORS = ['red', 'orange', 'yellow', 'green', 'blue', 'darkblue', 'purple'];
 
-let summer_sports = sports.slice(5);
+let rainbow  = [...hero, ...native, ...destination];
+rainbow.reverse();
 
-let winter_sports = sports.slice(0, 5);
+rainbow.splice(0,2, 'Richard');
+rainbow.pop();
+rainbow.push('Gave','Battle','In','Vain')
 
-let fruits = summer_sports.splice(2,2);
-fruits.push(winter_sports.splice(2,1)[0]);
 
-console.log(`*** Winter sports ***`);
-for(let i=0; i<winter_sports.length; i++){
-   console.log(winter_sports[i].join(`: `));
+
+document.write(`<div style="display: flex; justify-content: space-between; margin: 0 auto; width: 500px;">`);
+
+for (let i=0; i<rainbow.length; i++) {
+    document.write(`<div style="text-align: center;">
+        <div style="background: ${COLORS[i]}; width: 30px; height: 30px; border-radius: 50%; margin: 0 auto"></div>
+        <p>${rainbow[i]}</p>
+</div>`);
 }
 
-console.log(`*** Summer sports ***`);
-for(let i=0; i<summer_sports.length; i++){
-   console.log(summer_sports[i].join(`: `));
-}
-
-console.log(`*** Fruits ***`);
-for(let i=0; i<fruits.length; i++){
-   console.log(fruits[i].join(`: `));
-}
+document.write(`</div>`);
