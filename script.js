@@ -1,7 +1,6 @@
 const obj = {
     x: 10,
     y: 20,
-	h: 40,
     inner: {
         x: 20,
         z: 30
@@ -20,7 +19,7 @@ function convert(obj){
 	for (let key in obj) {
 		if (!(typeof (obj[key]) == "object")){
 			
-		objCopy[key] = obj[key];
+		objCopy[key] = JSON.parse(JSON.stringify(obj[key]));
 			
 		}
 		else{
