@@ -38,27 +38,41 @@ const fruits = [
     }
 
 ];
+debugger;
 let finalArray = [];
 let Product = {
-	getPrice(arr){
-		  arr.map(obj => {
-            if(obj.season) return obj.price *= this.seasonKoef;
-            else  return obj.price;
-        });
-		
-	},
+    getInfo(){
+        debugger;
 
-	getInfo(arr){
-        this.getPrice(arr);
-        arr.forEach(obj => {
-            finalArray.push(`Product${obj.icon} ${obj.name}.Type ${this.type}. Price ${obj.price}`);
-             return finalArray;
-        });
-	}
-};
+        return `Product${this.icon} ${this.name}.Type ${this.type}. Price ${this.getPrice()}`;
+    },
+    getPrice(){
+        debugger;
+        let priceKF = 0;
+        if(this.season) priceKF = this.price * this.seasonKoef;
+        else priceKF = this.price
+        return priceKF;
+    }
+}
 
-const makePrototype = (arr, objectProto) => objectProto.getInfo(arr);
-const renderList = (arr) => arr.forEach(item => console.log(item));
+function makePrototype(arr, objectProto){
+    debugger;
+    arr = JSON.parse(JSON.stringify(arr));
+    return arr
+        .map(product => {
+            let newObj = Object.create(objectProto); 
+            Object.assign(newObj, product); 
+            return newObj;
+        })
+}
+
+function renderList(arr){
+    debugger;
+    let LIs = arr
+        .map(product => `<li>${product.getInfo()}</li>`)
+        .join(``);
+    return `<ul>${LIs}</ul>`;
+}
 
 
 const Vegetable = Object.create(Product);
@@ -69,6 +83,4 @@ const Fruit = Object.create(Product);
 Fruit.type = `Fruit`;
 Fruit.seasonKoef = 2;
 
-makePrototype(vegetables,Vegetable);
-makePrototype(fruits,Fruit);
-renderList(finalArray);
+document.write(renderList(makePrototype(fruits,Fruit)));
